@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HICK! &mdash; ENOUGH (press release)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDE7D9;
+    --paper-dark:#E2DAC7;
+    --ink:#1B1815;
+    --muted:#6B6559;
+    --accent:#D6321F;
+    --highlight:#F2C230;
+    --tape:#E7DEC9;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ -webkit-text-size-adjust:100%; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      radial-gradient(rgba(27,24,21,0.035) 1px, transparent 1px);
+    background-size: 3px 3px;
+    color:var(--ink);
+    font-family:'IBM Plex Mono', monospace;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:56px 24px 96px;
+  }
+
+  /* ---------------------------------------------------
+     MASTHEAD
+  --------------------------------------------------- */
+
+  .masthead{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    padding-bottom:18px;
+    border-bottom:2px solid var(--ink);
+    margin-bottom:34px;
+  }
+
+  .masthead .dateline{
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    color:var(--muted);
+  }
+
+  .masthead .dateline strong{
+    color:var(--ink);
+    font-weight:700;
+  }
+
+  .stamp{
+    flex-shrink:0;
+    display:inline-block;
+    border:2.5px solid var(--accent);
+    color:var(--accent);
+    font-family:'Anton', sans-serif;
+    font-size:14px;
+    letter-spacing:0.08em;
+    padding:6px 12px;
+    transform:rotate(6deg);
+    border-radius:2px;
+  }
+
+  /* ---------------------------------------------------
+     HERO
+  --------------------------------------------------- */
+
+  .hero{
+    position:relative;
+    margin-bottom:38px;
+  }
+
+  .hero .tape{
+    position:absolute;
+    top:-22px;
+    left:36px;
+    width:96px;
+    height:30px;
+    background:var(--tape);
+    opacity:0.9;
+    transform:rotate(-4deg);
+    box-shadow:0 1px 2px rgba(27,24,21,0.15);
+  }
+
+  .hero h1{
+    font-family:'Anton', sans-serif;
+    font-weight:400;
+    font-size:clamp(56px, 14vw, 108px);
+    line-height:0.86;
+    letter-spacing:0.01em;
+    margin:0 0 10px;
+  }
+
+  .hero .by{
+    font-size:15px;
+    color:var(--muted);
+    margin:0 0 22px;
+  }
+
+  .hero .by a{
+    text-decoration-color:var(--accent);
+    text-decoration-thickness:2px;
+  }
+
+  .hero p.lede{
+    font-size:16px;
+    max-width:52ch;
+    margin:0;
+  }
+
+  /* ---------------------------------------------------
+     SECTION LABEL
+  --------------------------------------------------- */
+
+  .section-label{
+    font-size:13px;
+    font-weight:700;
+    color:var(--muted);
+    border-bottom:1px solid var(--ink);
+    padding-bottom:8px;
+    margin:0 0 18px;
+  }
+
+  /* ---------------------------------------------------
+     TRACKLIST
+  --------------------------------------------------- */
+
+  .tracklist{
+    margin-bottom:40px;
+  }
+
+  .track{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid rgba(27,24,21,0.14);
+  }
+
+  .track:first-child{ padding-top:0; }
+
+  .track-num{
+    font-size:13px;
+    color:var(--muted);
+    width:20px;
+    flex-shrink:0;
+  }
+
+  .track-name{
+    font-weight:600;
+    font-size:15.5px;
+    flex-grow:1;
+  }
+
+  .track-name .sub{
+    display:block;
+    font-weight:400;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:2px;
+  }
+
+  /* mini play button */
+  .play-btn{
+    flex-shrink:0;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    border:2px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  }
+
+  .play-btn:hover{ transform:scale(1.05); }
+
+  .play-btn:active{ transform:scale(0.96); }
+
+  .play-btn.is-playing{
+    background:var(--accent);
+    border-color:var(--accent);
+    color:var(--paper);
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes pulse{
+    0%,100%{ box-shadow:0 0 0 0 rgba(214,50,31,0.35); }
+    50%{ box-shadow:0 0 0 6px rgba(214,50,31,0); }
+  }
+
+  .play-icon{ margin-left:2px; }
+
+  .track-time{
+    font-size:12.5px;
+    color:var(--muted);
+    width:42px;
+    text-align:right;
+    flex-shrink:0;
+  }
+
+  .track-link{
+    flex-shrink:0;
+    font-size:13px;
+    font-weight:600;
+    color:var(--accent);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+
+  .track-link:hover{ text-decoration:underline; }
+
+  /* inline mini progress bar under the "Paper" row */
+  .mini-progress{
+    height:3px;
+    background:rgba(27,24,21,0.15);
+    border-radius:2px;
+    margin-top:2px;
+    overflow:hidden;
+    display:none;
+  }
+
+  .mini-progress.is-active{ display:block; }
+
+  .mini-progress-fill{
+    height:100%;
+    width:0%;
+    background:var(--accent);
+  }
+
+  .track-body{
+    flex-grow:1;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+
+  /* ---------------------------------------------------
+     FULL PLAYER CTA
+  --------------------------------------------------- */
+
+  .cta-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:52px;
+  }
+
+  .cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--ink);
+    color:var(--paper);
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+    padding:12px 20px;
+    border-radius:2px;
+  }
+
+  .cta:hover{ background:#000; }
+
+  /* ---------------------------------------------------
+     NOTES / FOOTER
+  --------------------------------------------------- */
+
+  .memo{
+    background:var(--paper-dark);
+    border-left:3px solid var(--highlight);
+    padding:16px 18px;
+    font-size:13.5px;
+    color:var(--ink);
+    margin-bottom:44px;
+  }
+
+  footer{
+    border-top:2px solid var(--ink);
+    padding-top:16px;
+    font-size:12px;
+    color:var(--muted);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .play-btn.is-playing{ animation:none; }
+  }
+
+  @media (max-width:480px){
+    .wrap{ padding:36px 18px 72px; }
+    .masthead{ flex-direction:column; }
+    .stamp{ transform:rotate(4deg); }
+  }
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+
+    <div class="masthead">
+      <div class="dateline">
+        FOR IMMEDIATE RELEASE<br>
+        <strong>HICK</strong> &middot; independent release
+      </div>
+      <div class="stamp">NEW EP</div>
+    </div>
+
+    <div class="hero">
+      <div class="tape"></div>
+      <h1>ENOUGH</h1>
+      <p class="by">an EP by <a href="#">HICK</a></p>
+      <p class="lede">Bookmark this to keep an eye on my project updates! Two songs are up so far &mdash; more on the way.</p>
+    </div>
+
+    <p class="section-label">Tracklist</p>
+
+    <div class="tracklist">
+
+      <div class="track">
+        <div class="track-num">01</div>
+        <button class="play-btn" id="playBtn" aria-label="Play Paper">
+          <svg class="play-icon" id="playIcon" width="12" height="14" viewBox="0 0 12 14" fill="none">
+            <path d="M0 0L12 7L0 14V0Z" fill="currentColor"/>
+          </svg>
+        </button>
+        <div class="track-body">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div class="track-name">Paper<span class="sub">from ENOUGH</span></div>
+            <div class="track-time" id="trackTime">&mdash;:&mdash;</div>
+          </div>
+          <div class="mini-progress" id="miniProgress">
+            <div class="mini-progress-fill" id="miniProgressFill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="track-num">02</div>
+        <div style="width:36px; flex-shrink:0;"></div>
+        <div class="track-body">
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+            <div class="track-name">Damn You!<span class="sub">liner notes</span></div>
+            <a class="track-link" href="Damn-You!/damn-you.html">read &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="cta-row">
+      <a class="cta" href="main.html">
+        Open full player &rarr;
+      </a>
+    </div>
+
+    <div class="memo">
+      <strong>Note to self:</strong> this page is the whole press kit for now &mdash; one EP, one player, no label, no PR firm. That's the point.
+    </div>
+
+    <footer>
+      <span>ENOUGH &mdash; HICK</span>
+      <span>self-released</span>
+    </footer>
+
+  </div>
+
+  <audio id="audio" src="assets/Song/Paper.mp3" preload="metadata"></audio>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const playBtn = document.getElementById('playBtn');
+    const trackTime = document.getElementById('trackTime');
+    const miniProgress = document.getElementById('miniProgress');
+    const miniProgressFill = document.getElementById('miniProgressFill');
+
+    const PAUSE_ICON = '<svg class="play-icon" width="12" height="14" viewBox="0 0 12 14" fill="none"><rect x="0" y="0" width="4" height="14" fill="currentColor"/><rect x="8" y="0" width="4" height="14" fill="currentColor"/></svg>';
+    const PLAY_ICON = '<svg class="play-icon" width="12" height="14" viewBox="0 0 12 14" fill="none"><path d="M0 0L12 7L0 14V0Z" fill="currentColor"/></svg>';
+
+    function setIcon(isPlaying){
+      playBtn.innerHTML = isPlaying ? PAUSE_ICON : PLAY_ICON;
+    }
+
+    function formatTime(sec){
+      if (!isFinite(sec)) return '\u2014:\u2014';
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    playBtn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener('play', () => {
+      playBtn.classList.add('is-playing');
+      setIcon(true);
+      miniProgress.classList.add('is-active');
+    });
+
+    audio.addEventListener('pause', () => {
+      playBtn.classList.remove('is-playing');
+      setIcon(false);
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+      trackTime.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration) {
+        miniProgressFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+        trackTime.textContent = formatTime(audio.duration - audio.currentTime);
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      playBtn.classList.remove('is-playing');
+      miniProgressFill.style.width = '0%';
+    });
+  </script>
+
+</body>
+</html>
